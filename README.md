@@ -1,5 +1,5 @@
 # WipeCountdownAnnounce
-**WipeCountdownAnnounce** is an [Oxide](https://umod.org/) plugin that provides regular public chat announcements to players on a Rust server about the *time remaining until the next wipe*. Wipe information is supplied by the [WipeCountdown](https://codefling.com/plugins/wipe-countdown) plugin.
+**WipeCountdownAnnounce** is an [Oxide](https://umod.org/) plugin that provides regular public chat announcements to players on a Rust server about the time remaining until the next wipe. Wipe information is supplied by the [WipeCountdown](https://codefling.com/plugins/wipe-countdown) plugin.
 
 Individually customizable messages are available for:
 - Standard days (e.g. *"X days, Y minutes until the next wipe"*).
