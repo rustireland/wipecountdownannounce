@@ -3,8 +3,8 @@
 
 Individually customizable messages are available for:
 - Standard days (e.g. *"X days, Y minutes until the next wipe"*).
-- Final day before the wipe (e.g. *"X hours, Y minutes until the next wipe"*).
-- Final hour before the wipe (e.g. *"X minutes until the next wipe"*).
+- The final day before the wipe (e.g. *"X hours, Y minutes until the next wipe"*).
+- The final hour before the wipe (e.g. *"X minutes until the next wipe"*).
 
 Additionally, a set list of timings can be used for the final hour before the wipe:
 - 60 minutes
