@@ -47,7 +47,8 @@ When run for the first time, the plugin will create a default configuration file
 {
   "Announcement Interval (in Minutes)": 20.0,
   "Countdown Final Hour (60, 30, 15, 10, 5, 1 minutes)": true,
-  "Chat Icon (SteamID)": 0
+  "Chat Icon (SteamID)": 0,
+  "Log Announcement Messages to Console": true
 }
 ```
 ## Localization
@@ -56,7 +57,8 @@ The default messages are in the `WipeCountdownAnnounce.json` file under the `oxi
 {
   "StandardMessage": "Next wipe will occur in <color=#ffa500>{days} days</color>, <color=#ffa500>{hours} hours</color>.",
   "FinalDayMessage": "Next wipe will occur in <color=#ffa500>{hours} hours</color>, <color=#ffa500>{minutes} minutes</color>.",
-  "FinalHourMessage": "Next wipe will occur in <color=#ffa500>{minutes} minutes</color>."
+  "FinalHourMessage": "Next wipe will occur in <color=#ffa500>{minutes} minutes</color>.",
+  "ConsoleMessage": "Next wipe will occur in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds."
 }
 ```
 # Credits

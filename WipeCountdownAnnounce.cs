@@ -7,7 +7,7 @@ using Oxide.Core.Libraries.Covalence;
 
 namespace Oxide.Plugins
 {
-    [Info("WipeCountdownAnnounce", "Agamemnon", "1.0.0")]
+    [Info("WipeCountdownAnnounce", "Agamemnon", "1.0.1")]
     [Description("Announces the time remaining until the next wipe to the server chat.")]
     class WipeCountdownAnnounce : RustPlugin
     {
@@ -188,6 +188,15 @@ namespace Oxide.Plugins
                             new KeyValuePair<string, string>("hours", hours.ToString()),
                             new KeyValuePair<string, string>("minutes", minutes.ToString()),
                             new KeyValuePair<string, string>("seconds", seconds.ToString())), _configData.ChatIcon);
+
+                        if (_configData.LogToConsole)
+                        {
+                            Puts(Lang("ConsoleMessage",
+                                new KeyValuePair<string, string>("days", days.ToString()),
+                                new KeyValuePair<string, string>("hours", hours.ToString()),
+                                new KeyValuePair<string, string>("minutes", minutes.ToString()),
+                                new KeyValuePair<string, string>("seconds", seconds.ToString())));
+                        }
                     }
                     else if (timeleft <= 3660 && _configData.CountdownEnabled)
                     {
@@ -197,6 +206,15 @@ namespace Oxide.Plugins
                     {
                         Server.Broadcast(Lang("FinalHourMessage",
                             new KeyValuePair<string, string>("minutes", minutes.ToString())), _configData.ChatIcon);
+
+                        if (_configData.LogToConsole)
+                        {
+                            Puts(Lang("ConsoleMessage",
+                                new KeyValuePair<string, string>("days", days.ToString()),
+                                new KeyValuePair<string, string>("hours", hours.ToString()),
+                                new KeyValuePair<string, string>("minutes", minutes.ToString()),
+                                new KeyValuePair<string, string>("seconds", seconds.ToString())));
+                        }
                     }
                     else
                     {
@@ -205,6 +223,15 @@ namespace Oxide.Plugins
                             new KeyValuePair<string, string>("hours", hours.ToString()),
                             new KeyValuePair<string, string>("minutes", minutes.ToString()),
                             new KeyValuePair<string, string>("seconds", seconds.ToString())), _configData.ChatIcon);
+
+                        if (_configData.LogToConsole)
+                        {
+                            Puts(Lang("ConsoleMessage",
+                                new KeyValuePair<string, string>("days", days.ToString()),
+                                new KeyValuePair<string, string>("hours", hours.ToString()),
+                                new KeyValuePair<string, string>("minutes", minutes.ToString()),
+                                new KeyValuePair<string, string>("seconds", seconds.ToString())));
+                        }
                     }
                 }
             }
@@ -216,6 +243,15 @@ namespace Oxide.Plugins
             {
                 Server.Broadcast(Lang("FinalHourMessage",
                     new KeyValuePair<string, string>("minutes", minutes.ToString())), _configData.ChatIcon);
+
+                if (_configData.LogToConsole)
+                {
+                    Puts(Lang("ConsoleMessage",
+                        new KeyValuePair<string, string>("days", "0"),
+                        new KeyValuePair<string, string>("hours", "0"),
+                        new KeyValuePair<string, string>("minutes", minutes.ToString()),
+                        new KeyValuePair<string, string>("seconds", "0")));
+                }
             }
         }
         #endregion
@@ -244,7 +280,10 @@ namespace Oxide.Plugins
             public bool CountdownEnabled = true;
 
             [JsonProperty(PropertyName = "Chat Icon (SteamID)")]
-            public ulong ChatIcon = 76561199034048902;
+            public ulong ChatIcon = 0;
+
+            [JsonProperty(PropertyName = "Log Announcement Messages to Console")]
+            public bool LogToConsole = true;
         }
 
         private bool LoadConfigVariables()
@@ -282,14 +321,16 @@ namespace Oxide.Plugins
             {
                 ["StandardMessage"] = "Next wipe will occur in <color=#ffa500>{days} days</color>, <color=#ffa500>{hours} hours</color>.",
                 ["FinalDayMessage"] = "Next wipe will occur in <color=#ffa500>{hours} hours</color>, <color=#ffa500>{minutes} minutes</color>.",
-                ["FinalHourMessage"] = "Next wipe will occur in <color=#ffa500>{minutes} minutes</color>."
+                ["FinalHourMessage"] = "Next wipe will occur in <color=#ffa500>{minutes} minutes</color>.",
+                ["ConsoleMessage"] = "Next wipe will occur in {days} days, {hours} hours, {minutes} minutes, {seconds} seconds."
 
             }, this);
             lang.RegisterMessages(new Dictionary<string, string>
             {
                 ["StandardMessage"] = "Le prochain wipe aura lieu dans <color=#ffa500>{days} jours</color>, <color=#ffa500>{hours} heures</color>.",
                 ["FinalDayMessage"] = "Le prochain wipe aura lieu dans <color=#ffa500>{hours} heures</color>, <color=#ffa500>{minutes} minutes</color>.",
-                ["FinalHourMessage"] = "Le prochain wipe aura lieu dans <color=#ffa500>{minutes} minutes</color>."
+                ["FinalHourMessage"] = "Le prochain wipe aura lieu dans <color=#ffa500>{minutes} minutes</color>.",
+                ["ConsoleMessage"] = "Le prochain wipe aura lieu dans {days} jours, {hours} heures, {minutes} minutes, {seconds} secondes."
             }, this, "fr");
         }
 
